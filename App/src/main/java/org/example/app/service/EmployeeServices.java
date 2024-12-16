@@ -6,7 +6,9 @@ import org.example.app.Models.KnownLanguage;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServices {
@@ -123,4 +125,25 @@ public class EmployeeServices {
         }
 
     }
+
+    public List<Employee> getJavaExperts() {
+        employees = handler.load();
+        if (employees == null || employees.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        return employees.stream()
+                .filter(employee -> employee.getKnownLanguages() != null)
+                .filter(employee -> employee.getKnownLanguages().stream()
+                        .anyMatch(lang -> "Java".equalsIgnoreCase(lang.getLanguageName()) && lang.getScoreOutOf100() > 50))
+                .sorted(Comparator.comparingInt(employee ->
+                        employee.getKnownLanguages().stream()
+                                .filter(lang -> "Java".equalsIgnoreCase(lang.getLanguageName()))
+                                .mapToInt(KnownLanguage::getScoreOutOf100)
+                                .max()
+                                .orElse(0)))
+                .collect(Collectors.toList());
+    }
+
+
 }
