@@ -43,4 +43,9 @@ public class EmployeeController {
     {
         return service.deleteEmployeeById(employeeId);
     }
+    @GetMapping("/javaExperts")
+    public List<Employee> getJavaExperts() {
+        return service.getJavaExperts();
+    }
+
 }
