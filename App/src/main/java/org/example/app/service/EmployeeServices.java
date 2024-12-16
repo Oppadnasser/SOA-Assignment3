@@ -102,4 +102,25 @@ public class EmployeeServices {
         }
         return matchingEmployees;
     }
+
+    public String deleteEmployeeById(String id)
+    {
+        employees = handler.load();
+        if(employees == null || employees.isEmpty())
+        {
+            return "No Employee Found";
+        }
+        boolean isRemoved = employees.removeIf(employee -> String.valueOf(employee.getEmployeeID()).equals(id));
+
+        if(isRemoved)
+        {
+            handler.save(employees);
+            return "Employee Deleted Successfully";
+        }
+        else
+        {
+            return "Employee With ID " + id + "Not Found";
+        }
+
+    }
 }
