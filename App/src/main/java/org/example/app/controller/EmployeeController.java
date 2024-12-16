@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 public class EmployeeController {
@@ -24,5 +26,15 @@ public class EmployeeController {
     @PostMapping("/updatelanguage")
     public String updateLanguage(@RequestParam int id, @RequestParam String language, @RequestParam int score){
         return service.updateLanguage(id,language,score);
+    }
+    @GetMapping("/searchById")
+    public List<Employee> searchById(@RequestParam String employeeId)
+    {
+        return service.searchEmployeeById(employeeId);
+    }
+    @GetMapping("/searchByDesignation")
+    public List<Employee> searchByDesignation(@RequestParam String designation)
+    {
+        return service.searchEmployeeByDesignation(designation);
     }
 }
