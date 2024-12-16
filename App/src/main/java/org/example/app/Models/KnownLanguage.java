@@ -1,9 +1,15 @@
 package org.example.app.Models;
 
+import java.util.Scanner;
+
 public class KnownLanguage {
     private String LanguageName;
     private int ScoreOutOf100;
-    KnownLanguage(){};
+    public KnownLanguage(){};
+    public KnownLanguage(String name, int score){
+        LanguageName = name;
+        ScoreOutOf100 = score;
+    }
 
     // Getters and Setters
     public String getLanguageName() {

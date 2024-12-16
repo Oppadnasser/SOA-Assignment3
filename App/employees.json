@@ -1,13 +1,16 @@
 [ {
-  "firstName" : "John",
-  "designation" : "Team leader",
   "employeeID" : 2000,
-  "lastName" : "Adamo",
   "knownLanguages" : [ {
-    "scoreOutOf100" : 90,
+    "scoreOutOf100" : 95,
     "languageName" : "Java"
   }, {
     "scoreOutOf100" : 80,
     "languageName" : "Python"
-  } ]
+  }, {
+    "scoreOutOf100" : 95,
+    "languageName" : "cpp"
+  } ],
+  "firstName" : "oppad",
+  "lastName" : "Adamo",
+  "designation" : "Team leader"
 } ]

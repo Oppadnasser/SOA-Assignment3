@@ -18,7 +18,11 @@ public class EmployeeController {
         return service.addEmployee(employee);
     }
     @PostMapping("/update")
-    public String update(@RequestParam int id, @RequestParam String designation){
-        return service.update(id,designation);
+    public String update(@RequestParam int id, @RequestParam String value , @RequestParam String field){
+        return service.update(id,field,value);
+    }
+    @PostMapping("/updatelanguage")
+    public String updateLanguage(@RequestParam int id, @RequestParam String language, @RequestParam int score){
+        return service.updateLanguage(id,language,score);
     }
 }

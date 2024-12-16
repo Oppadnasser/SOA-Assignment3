@@ -63,4 +63,20 @@ public class Employee {
     public void setKnownLanguages(List<KnownLanguage> knownLanguages) {
         KnownLanguages = knownLanguages;
     }
+    public void setField(String field , String value){
+        switch (field){
+            case"firstname":{
+                FirstName = value;
+                break;
+            }
+            case"lastname":{
+                LastName = value;
+                break;
+            }
+            case"designation":{
+                Designation = value;
+                break;
+            }
+        }
+    }
 }
