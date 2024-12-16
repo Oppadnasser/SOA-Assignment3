@@ -15,8 +15,10 @@ public class EmployeeController {
     private final EmployeeServices service = new EmployeeServices();
     @PostMapping("/addEmployee")
     public String add(@RequestBody Employee employee){
-        System.out.println(employee);
-        service.addEmployee(employee);
-        return "employee";
+        return service.addEmployee(employee);
+    }
+    @PostMapping("/update")
+    public String update(@RequestParam int id, @RequestParam String designation){
+        return service.update(id,designation);
     }
 }
