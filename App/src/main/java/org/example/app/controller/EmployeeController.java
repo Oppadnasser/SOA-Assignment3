@@ -37,4 +37,10 @@ public class EmployeeController {
     {
         return service.searchEmployeeByDesignation(designation);
     }
+
+    @DeleteMapping("/deleteEmployee")
+    public String deleteEmployeeById(@RequestParam String employeeId)
+    {
+        return service.deleteEmployeeById(employeeId);
+    }
 }
