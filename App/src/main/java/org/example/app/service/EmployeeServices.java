@@ -66,4 +66,40 @@ public class EmployeeServices {
         }
         return "id not found";
     }
+
+    public List<Employee> searchEmployeeById(String employeeId)
+    {
+        employees = handler.load();
+        if(employees == null || employees.isEmpty())
+        {
+            return new ArrayList<>();
+        }
+        List<Employee> matchingEmployees = new ArrayList<>();
+        for( Employee employee : employees)
+        {
+            if(String.valueOf(employee.getEmployeeID()).contains(employeeId))
+            {
+                matchingEmployees.add(employee);
+            }
+        }
+        return matchingEmployees;
+    }
+
+    public List<Employee> searchEmployeeByDesignation(String designation)
+    {
+        employees= handler.load();
+        if(employees == null || employees.isEmpty())
+        {
+            return new ArrayList<>();
+        }
+        List<Employee> matchingEmployees = new ArrayList<>();
+        for(Employee employee : employees)
+        {
+            if(designation != null && employee.getDesignation().toLowerCase().contains(designation.toLowerCase()))
+            {
+                matchingEmployees.add(employee);
+            }
+        }
+        return matchingEmployees;
+    }
 }
